@@ -21,7 +21,7 @@ spec:
             type: DirectoryOrCreate
       containers:
         - name: graphana
-          image: prom/prometheus:latest
+          image: grafana/grafana-oss
           volumeMounts:
            - mountPath: /var/lib/grafana
              name: graph-data
