@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: graph
+  labels:
+    app: graph
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: graph
+  template:
+    metadata:
+      labels:
+        app: graph
+    spec:
+      volumes:
+        - name: graph-data
+          hostPath:
+            path: /disk1/graphana
+            type: DirectoryOrCreate
+      containers:
+        - name: graphana
+          image: prom/prometheus:latest
+          volumeMounts:
+           - mountPath: /var/lib/grafana
+             name: graph-data
+          ports:
+            - containerPort: 3000
