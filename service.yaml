@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: graph
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: graph
   ports:
