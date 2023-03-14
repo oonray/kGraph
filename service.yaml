@@ -10,7 +10,6 @@ spec:
     - protocol: TCP
       name: graph
       port: 3000
-      targetPort: 3000
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -27,6 +26,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: vault
+                name: graph
                 port:
                   number: 3000
