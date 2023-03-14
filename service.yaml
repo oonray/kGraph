@@ -11,3 +11,22 @@ spec:
       name: graph
       port: 3000
       targetPort: 3000
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: graph-ingress
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+    - host: "graph.cluster.local"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: vault
+                port:
+                  number: 3000

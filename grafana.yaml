@@ -11,6 +11,8 @@ spec:
       app: graph
   template:
     metadata:
+      annotations:
+        linkerd.io/inject: enabled
       labels:
         app: graph
     spec:
@@ -23,7 +25,7 @@ spec:
         - name: graphana
           image: grafana/grafana-oss
           volumeMounts:
-           - mountPath: /var/lib/grafana
-             name: graph-data
+            - mountPath: /var/lib/grafana
+              name: graph-data
           ports:
             - containerPort: 3000
